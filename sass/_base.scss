@@ -1,0 +1,150 @@
+@use "./_variables.scss" as v;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 10px;
+  font-family: "Roboto";
+  color: v.$black;
+}
+body {
+  overflow-x: hidden;
+}
+section {
+  margin-top: v.$m-margin;
+  @media (max-width: 700px) {
+    margin-top: 8rem;
+  }
+}
+fieldset {
+  border: none;
+}
+input,
+select {
+  height: 5rem;
+  border-radius: 2px;
+  border: none;
+  padding-left: v.$m-padding;
+  font-size: v.$p-size;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2.5px solid #ffdf4fe3;
+}
+textarea {
+  height: 9rem;
+  padding: v.$xs-padding v.$m-padding;
+  border-radius: 2px;
+  border: none;
+  font-size: v.$p-size;
+  font-family: "Roboto";
+}
+[class*="__container"] {
+  max-width: v.$container-width;
+  margin: 0px auto;
+  padding: 0 15px;
+}
+
+[class*="__maintitle"] {
+  font-size: v.$h1-size;
+  font-weight: 500;
+  color: v.$white;
+  text-transform: capitalize;
+  @media (max-width: 600px) {
+    font-size: v.$h1-size-media;
+  }
+}
+[class*="__title"] {
+  font-size: v.$h2-size;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.title {
+  &_center {
+    text-align: center;
+  }
+}
+[class*="__subtitle"] {
+  font-size: v.$h3-size;
+  font-weight: 500;
+}
+[class*="__text"] {
+  font-size: v.$p-size;
+  font-weight: 400;
+  line-height: v.$p-lheight;
+}
+[class*="__link"] {
+  cursor: pointer;
+  &:after {
+    display: inline-flex;
+    transition: all 0.3s ease;
+  }
+  &:hover:after {
+    transform: rotate(-30deg) scale(1.2);
+  }
+}
+.button {
+  cursor: pointer;
+  position: relative;
+  width: fit-content;
+  padding: v.$s-padding v.$l-padding;
+  text-decoration: none;
+  border-radius: 2px;
+  &__text {
+    position: relative;
+    z-index: 10;
+    width: fit-content;
+    display: block;
+    text-align: center;
+    font-size: v.$btn-size;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: v.$white;
+  }
+  &_fill {
+    background-color: v.$darkblue;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 54px;
+      background: rgba(164, 184, 193, 0.3);
+      border-radius: 2px;
+      transition: all 1s ease;
+    }
+    &:hover:before {
+      width: 100%;
+    }
+  }
+  &_border {
+    border-radius: v.$bdr-radius;
+    background-color: transparent;
+    border: 2px solid v.$white;
+    transition: all 0.3s;
+    &:hover:before {
+      width: 100%;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 54px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 2px;
+      transition: all 1s ease;
+    }
+  }
+}
+.scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: transform 0.5s, opacity 0.5s;
+}
