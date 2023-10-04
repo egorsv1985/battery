@@ -1,0 +1,238 @@
+@use "./_variables.scss" as v;
+.header {
+  position: relative;
+  height: 12rem;
+  background-color: v.$white;
+  box-shadow: 0 4px 33px rgba(0, 0, 0, 0.1);
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 3.5rem;
+    position: relative;
+  }
+  &__burger-button {
+    position: relative;
+  }
+  &__button {
+    @media (max-width: 1000px) {
+      display: none;
+    }
+  }
+}
+.nav {
+  display: flex;
+  flex-grow: 3;
+  column-gap: 2.5rem;
+  justify-content: flex-end;
+  padding-right: v.$xxl-padding;
+  @media (max-width: 1000px) {
+    display: none;
+  }
+  &__item {
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: v.$black;
+    display: inline-block;
+    position: relative;
+    &_uncover {
+      &::after {
+        content: url(../img/uncover.svg);
+        display: inline-block;
+        padding: 0 v.$xxs-padding;
+        margin-top: -5px;
+        transition: all 0.3s;
+      }
+    }
+    &_active {
+      color: v.$darkblue;
+      border-bottom: 2px solid v.$darkblue-rgb;
+      opacity: 0.8;
+    }
+  }
+  &__second {
+    list-style: none;
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    -webkit-transition: 0.25s linear opacity;
+  }
+  &__uncover {
+    position: relative;
+  }
+}
+.nav__uncover:hover {
+  & > .nav__second {
+    left: calc(v.$s-padding * -1);
+    opacity: 1;
+  }
+  & > .nav__item_uncover {
+    &::after {
+      transform: rotate(-180deg);
+    }
+  }
+}
+.second-nav {
+  width: 25rem;
+  z-index: 10;
+  background-color: v.$white;
+  padding: v.$m-padding v.$s-padding v.$xs-padding v.$s-padding;
+  border-radius: 2px;
+  box-shadow: 0 4px 2px rgba(0, 0, 0, 0.25);
+  @media (max-width: 1000px) {
+    background-color: transparent;
+    box-shadow: none;
+  }
+  &__item {
+    padding-bottom: v.$xs-padding;
+    color: v.$white;
+  }
+  &__link {
+    font-size: 1.6rem;
+    color: v.$black;
+    text-decoration: none;
+    transition: all 0.3s;
+    @media (max-width: 1000px) {
+      color: v.$white;
+    }
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+.nav__item:not(.nav__item_active):hover::before {
+  width: 100%;
+  right: 0;
+}
+
+.nav__item:not(.nav__item_active) {
+  &:before {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    background: v.$darkblue;
+    transition: width 0.5s ease 0s, left 0.5s ease 0s;
+    width: 0;
+  }
+}
+.wrapper {
+  position: relative;
+  overflow-x: hidden;
+  z-index: 902;
+  display: none;
+  @media (max-width: 1000px) {
+    display: block;
+  }
+}
+.burgermenu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 30rem;
+  padding-left: v.$m-padding;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: v.$darkblue;
+  transition: 1s;
+  transform: translateX(100%);
+}
+.burgermenu_active {
+  transform: translateX(0%);
+}
+.nav-burger {
+  display: flex;
+  row-gap: 3rem;
+  align-items: flex-start;
+  height: 80%;
+  flex-direction: column;
+  &__item {
+    font-size: v.$p-size;
+    color: v.$white;
+    text-decoration: none;
+  }
+  &__item {
+    &_active {
+      border-bottom: 2px solid v.$white;
+      opacity: 0.8;
+    }
+  }
+}
+.burger-list a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: v.$white;
+  font-family: roboto;
+  font: 2em sans-serif;
+}
+.burger-button {
+  display: block;
+  width: 70px;
+  height: 70px;
+  background-color: rgba($color: #fff, $alpha: 0.7);
+  position: absolute;
+  left: -70px;
+  top: 25px;
+  border-radius: 10rem;
+}
+.burger-button span {
+  right: 0;
+}
+.burger-button span,
+.burger-button span::before,
+.burger-button span::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -25px;
+  margin-top: -4px;
+  width: 50px;
+  height: 3px;
+  background-color: v.$darkblue;
+  border-radius: 100px;
+}
+.burger-button span::before,
+.burger-button span::after {
+  content: "";
+  display: block;
+  transition: 0.1s;
+}
+.burger-button span::before {
+  transform: translateY(-14px);
+}
+.burger-button span::after {
+  right: 0;
+  left: auto;
+  width: 20px;
+  transition: all 0.3s ease;
+  transform: translateY(16px);
+}
+.burgermenu_active > .burger-button {
+  @media (max-width: 400px) {
+    left: 220px;
+  }
+}
+
+.burgermenu_active span:after {
+  width: 50px;
+}
+.menu-background {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background: #000;
+  opacity: 0.3;
+  z-index: 0;
+  display: none;
+}
+.menu-background_active {
+  display: block;
+}

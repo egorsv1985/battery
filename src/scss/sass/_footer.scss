@@ -1,0 +1,118 @@
+@use "./_variables.scss" as v;
+@import "./_animation.scss";
+
+.footer {
+  background-color: v.$darkblue;
+  background-image: url(../img/footer_img.svg);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  color: v.$white;
+  padding-top: v.$xxl-padding;
+  @media (max-width: 600px) {
+    background-position: left bottom -12rem;
+  }
+  &__main-content {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 3rem;
+    row-gap: 5rem;
+    flex-wrap: wrap;
+  }
+  &__subtitle {
+    margin-bottom: v.$l-padding;
+  }
+  &__info {
+    margin-top: v.$s-margin;
+    padding-bottom: v.$m-padding;
+    font-size: 1.6rem;
+    text-align: right;
+    opacity: 0.7;
+  }
+  &__logo {
+    @media (max-width: 930px) {
+      width: -webkit-fill-available;
+    }
+  }
+}
+.logo {
+  text-decoration: none;
+  &__transcript {
+    padding-top: v.$xs-padding;
+    font-size: 1.8rem;
+    color: v.$white;
+  }
+}
+.list {
+  height: 18rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+  column-gap: 2rem;
+  @media (max-width: 400px) {
+    height: auto;
+  }
+  &__item {
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: v.$white;
+    transition: all 0.3s ease;
+    &::before {
+      content: url(../img/circle.svg);
+      padding-right: v.$xs-padding;
+    }
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+.contact-footer {
+  &__subtitle {
+    padding-bottom: v.$l-padding;
+  }
+  &__item {
+    display: flex;
+    column-gap: 1rem;
+    padding-bottom: v.$m-padding;
+    @media (max-width: 400px) {
+      flex-direction: column;
+    }
+  }
+  &__text {
+    max-width: 30.3rem;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: v.$white;
+  }
+}
+._loc-cont:hover {
+  ._location path:nth-child(1) {
+    stroke-dasharray: 77px;
+    stroke-dashoffset: 77px;
+    animation: anim-line 1s ease forwards;
+  }
+  ._location path:nth-child(2) {
+    stroke-dasharray: 20px;
+    stroke-dashoffset: 20px;
+    animation: anim-line 1s ease forwards;
+  }
+}
+._phone-cont:hover {
+  ._phone path {
+    stroke-dasharray: 74px;
+    stroke-dashoffset: 74px;
+    animation: anim-line 1s ease forwards;
+  }
+}
+._mail-cont:hover {
+  ._mail path:nth-child(1) {
+    stroke-dasharray: 80px;
+    stroke-dashoffset: 80px;
+    animation: anim-line 1s ease forwards;
+  }
+  ._mail path:nth-child(2) {
+    stroke-dasharray: 20px;
+    stroke-dashoffset: 20px;
+    animation: anim-line 1s ease forwards;
+  }
+}
