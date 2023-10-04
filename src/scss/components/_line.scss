@@ -1,0 +1,59 @@
+.line {
+  width: 1px;
+  height: 70px;
+  border-left: 1px dashed #2b579a;
+  @include media (min, sm) {
+	height: 90px;
+  }
+  &::after,
+  &::before {
+    content: "";
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    left: 0%;
+    transform: translateX(-50%);
+  }
+  &::after {
+    width: 4px;
+    height: 4px;
+    background-color: #2b579a;
+    bottom: 0%;
+  }
+  &::before {
+    width: 28px;
+    height: 28px;
+    background: url("@img/icons/circle.svg") no-repeat center / cover;
+    top: -30%;
+  }
+  &__info {
+    top: -60%;
+
+    transform: translateX(-50%);
+  }
+  &--frontal {
+    bottom: 87%;
+    left: 42%;
+  }
+  &--side {
+    bottom: 83%;
+    right: 25%;
+  }
+  &--back {
+    bottom: 81%;
+    right: 14%;
+
+    .line {
+      height: 140px;
+	  @include media (min, sm) {
+		height: 160px;
+	  }
+      &::before {
+        top: -10%;
+      }
+      &__info {
+        top: -30%;
+      }
+    }
+  }
+}

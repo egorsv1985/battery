@@ -1,0 +1,21 @@
+.faq {
+  &__box-circle {
+    width: 36px;
+    height: 36px;
+    background: url("@img/icons/plus.svg") no-repeat center / 21px 21px;
+    right: 2%;
+    top: 6%;
+   
+    transition: all 0.3s ease-in-out;
+  }
+
+  .card {
+    &__btn {
+      &[aria-expanded="true"] {
+        .faq__box-circle {
+          background: url("@img/icons/minus.svg") no-repeat center / 21px 3px;
+        }
+      }
+    }
+  }
+}
